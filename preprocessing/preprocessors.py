@@ -12,6 +12,13 @@ def load_dataset(*, file_name: str) -> pd.DataFrame:
     _data = pd.read_csv(file_name)
     return _data
 
+def get_stockdim():
+    """
+    Get number of unique stocks in the dataset
+    """
+    df = load_dataset(file_name=config.TRAINING_DATA_FILE)
+    return df.tic.nunique()
+
 def data_split(df,start,end):
     """
     split the dataset into training or testing using date
