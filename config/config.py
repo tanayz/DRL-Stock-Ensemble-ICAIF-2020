@@ -16,11 +16,12 @@ import pandas as pd
 
 # data
 #TRAINING_DATA_FILE = "data/ETF_SPY_2009_2020.csv"
-TRAINING_DATA_FILE = "data/dow_30_2009_2020.csv"
-
+#TRAINING_DATA_FILE = "data/dow_30_2009_2020.csv"
+TRAINING_DATA_FILE = "data/TopTech_2009_2020.csv"
 
 TRAINED_MODEL_DIR = "trained_models"
-TURBULENCE_DATA = "data/dow30_turbulence_index.csv"
+#TURBULENCE_DATA = "data/dow30_turbulence_index.csv"
+TURBULENCE_DATA = "data/TopTech_turbulence_index.csv"
 
 TESTING_DATA_FILE = "test.csv"
 
