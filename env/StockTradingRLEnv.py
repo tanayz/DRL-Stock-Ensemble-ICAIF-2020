@@ -117,7 +117,8 @@ class StockEnv(gym.Env):
             plt.close()
             df_total_value = pd.DataFrame(self.asset_memory)
             df_total_value.to_csv('account_value.csv')
-            print("total_reward:{}".format(self.state[0]+sum(np.array(self.state[1:(STOCK_DIM+1)])*np.array(self.state[(STOCK_DIM+1):61]))- INITIAL_ACCOUNT_BALANCE ))
+            print("total_reward:{}".format(self.state[0]+sum(np.array(self.state[1:(STOCK_DIM+1)])*\
+                np.array(self.state[(STOCK_DIM+1):(STOCK_DIM*2+1)]))- INITIAL_ACCOUNT_BALANCE ))
             print("total_cost: ", self.cost)
             df_total_value.columns = ['account_value']
             df_total_value['daily_return']=df_total_value.pct_change(1)
@@ -141,7 +142,7 @@ class StockEnv(gym.Env):
             #actions = (actions.astype(int))
             
             begin_total_asset = self.state[0]+ \
-            sum(np.array(self.state[1:(STOCK_DIM+1)])*np.array(self.state[(STOCK_DIM+1):61]))
+            sum(np.array(self.state[1:(STOCK_DIM+1)])*np.array(self.state[(STOCK_DIM+1):(STOCK_DIM*2+1)]))
             #print("begin_total_asset:{}".format(begin_total_asset))
             
             argsort_actions = np.argsort(actions)
@@ -165,14 +166,14 @@ class StockEnv(gym.Env):
             # print("stock_shares:{}".format(self.state[29:]))
             self.state =  [self.state[0]] + \
                     self.data.adjcp.values.tolist() + \
-                    list(self.state[(STOCK_DIM+1):61]) + \
+                    list(self.state[(STOCK_DIM+1):(STOCK_DIM*2+1)]) + \
                     self.data.macd.values.tolist() + \
                     self.data.rsi.values.tolist() + \
                     self.data.cci.values.tolist() + \
                     self.data.adx.values.tolist()
             
             end_total_asset = self.state[0]+ \
-            sum(np.array(self.state[1:(STOCK_DIM+1)])*np.array(self.state[(STOCK_DIM+1):61]))
+            sum(np.array(self.state[1:(STOCK_DIM+1)])*np.array(self.state[(STOCK_DIM+1):(STOCK_DIM*2+1)]))
             
             #print("end_total_asset:{}".format(end_total_asset))
             
