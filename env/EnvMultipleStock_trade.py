@@ -126,14 +126,14 @@ class StockEnvTrade(gym.Env):
             df_total_value.to_csv('results/account_value_trade_{}_{}.csv'.format(self.model_name, self.iteration))
             end_total_asset = self.state[0]+ \
             sum(np.array(self.state[1:(STOCK_DIM+1)])*np.array(self.state[(STOCK_DIM+1):(STOCK_DIM*2+1)]))
-            profit = (end_total_asset-self.asset_memory[0]-self.cost)
+            profit = (end_total_asset-INITIAL_ACCOUNT_BALANCE-self.cost)
             print("previous_total_asset:{:.2f}".format(self.asset_memory[0]))           
 
             print("end_total_asset:{:.2f}".format(end_total_asset))
             print("Total reward:{:.2f}".format(self.state[0]+sum(np.array(self.state[1:(STOCK_DIM+1)])*\
                 np.array(self.state[(STOCK_DIM+1):(STOCK_DIM*2+1)]))- self.asset_memory[0] ))
             print("Total cost: {:.2f}".format(self.cost))
-            print("Total profit:{:.2f} and {:.2%}".format(profit,profit/self.asset_memory[0]))
+            print("Total profit:{:.2f} and {:.2%}".format(profit,profit/INITIAL_ACCOUNT_BALANCE))
             print("Total trades: ", self.trades)
 
             df_total_value.columns = ['account_value']
