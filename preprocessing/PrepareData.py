@@ -8,7 +8,7 @@ import pandas as pd
 from datetime import datetime,timedelta
 from Utility import getHistQuote
 
-def prepareData(symbols):
+def preparedata(symbols):
     data = pd.DataFrame()
     
     for symbol in symbols:    
