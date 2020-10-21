@@ -16,7 +16,7 @@ INITIAL_ACCOUNT_BALANCE=1000000
 # total number of stocks in our portfolio
 STOCK_DIM = get_stockdim()
 # transaction fee: 2/1000 reasonable percentage
-TRANSACTION_FEE_PERCENT = 0.002
+TRANSACTION_FEE_PERCENT = 0.00
 
 # turbulence index: 120 reasonable threshold
 TURBULENCE_THRESHOLD = 120

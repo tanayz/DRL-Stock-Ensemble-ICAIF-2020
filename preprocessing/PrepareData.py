@@ -6,7 +6,7 @@ Created on Mon Oct 19 22:39:10 2020
 """
 import pandas as pd
 from datetime import datetime,timedelta
-from Utility import getHistQuote
+from preprocessing.Utility import getHistQuote
 
 def preparedata(symbols):
     data = pd.DataFrame()
@@ -27,7 +27,7 @@ def preparedata(symbols):
     
     data.datadate = data.datadate.apply(lambda x: x.strftime('%Y%m%d')).astype(int)
     
-    data.to_csv('../data/TopTech_2009_2020.csv')
+    data.to_csv('data/TopTech_2009_2020.csv')
     
     print(data.head())
     
