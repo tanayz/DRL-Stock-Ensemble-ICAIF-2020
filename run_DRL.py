@@ -6,15 +6,20 @@ from stable_baselines.common.vec_env import DummyVecEnv
 
 # preprocessor
 from preprocessing.preprocessors import *
+from preprocessing.preparedata import preparedata
 # config
 from config.config import *
 # model
 from model.models import *
 
 
-def run_model() -> None:
-    """Train the model."""
 
+def run_model() -> None:
+    """ Create source data"""
+    symbols=['MSFT','ADBE','AAPL','GOOG','AMZN']
+    preparedata(symbols)
+    
+    """Train the model."""
     # read and preprocess data
     data = preprocess_data()
     data = add_turbulence(data)

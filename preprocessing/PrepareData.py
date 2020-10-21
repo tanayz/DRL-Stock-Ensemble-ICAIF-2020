@@ -8,7 +8,7 @@ import pandas as pd
 from datetime import datetime,timedelta
 from Utility import getHistQuote
 
-def prepareData():
+def prepareData(symbols):
     data = pd.DataFrame()
     
     for symbol in symbols:    
@@ -32,6 +32,5 @@ def prepareData():
     print(data.head())
     
 if __name__ == '__main__':
-    symbols=['MSFT','ADBE','AAPL','GOOG','AMZN']
-    prepareData()
+    pass
     
