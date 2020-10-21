@@ -32,6 +32,6 @@ def prepareData():
     print(data.head())
     
 if __name__ == '__main__':
-    symbols=['MSFT','ADBE','AAPL','GOOG','AMZN','BA','ORCL','IBM']
+    symbols=['MSFT','ADBE','AAPL','GOOG','AMZN']
     prepareData()
     
