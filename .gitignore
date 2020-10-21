@@ -6,11 +6,6 @@ __pycache__/
 # C extensions
 *.so
 
-# Results
-results/
-*.csv
-*.png
-
 trained_models/
 *.zip
 
@@ -135,3 +130,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+results/account_rewards_trade_ensemble_*.csv
+results/account_value_trade_ensemble_*.png
+trained_models/A2C_*.zip
+trained_models/PPO_*.zip
+trained_models/DDPG_*.zip

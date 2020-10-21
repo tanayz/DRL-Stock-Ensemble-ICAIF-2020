@@ -126,19 +126,21 @@ class StockEnvTrade(gym.Env):
             df_total_value.to_csv('results/account_value_trade_{}_{}.csv'.format(self.model_name, self.iteration))
             end_total_asset = self.state[0]+ \
             sum(np.array(self.state[1:(STOCK_DIM+1)])*np.array(self.state[(STOCK_DIM+1):(STOCK_DIM*2+1)]))
-            print("previous_total_asset:{}".format(self.asset_memory[0]))           
+            profit = (end_total_asset-self.asset_memory[0]-self.cost)
+            print("previous_total_asset:{:.2f}".format(self.asset_memory[0]))           
 
-            print("end_total_asset:{}".format(end_total_asset))
-            print("total_reward:{}".format(self.state[0]+sum(np.array(self.state[1:(STOCK_DIM+1)])*\
+            print("end_total_asset:{:.2f}".format(end_total_asset))
+            print("Total reward:{:.2f}".format(self.state[0]+sum(np.array(self.state[1:(STOCK_DIM+1)])*\
                 np.array(self.state[(STOCK_DIM+1):(STOCK_DIM*2+1)]))- self.asset_memory[0] ))
-            print("total_cost: ", self.cost)
-            print("total trades: ", self.trades)
+            print("Total cost: {:.2f}".format(self.cost))
+            print("Total profit:{:.2f} and {:.2%}".format(profit,profit/self.asset_memory[0]))
+            print("Total trades: ", self.trades)
 
             df_total_value.columns = ['account_value']
             df_total_value['daily_return']=df_total_value.pct_change(1)
             sharpe = (4**0.5)*df_total_value['daily_return'].mean()/ \
                   df_total_value['daily_return'].std()
-            print("Sharpe: ",sharpe)
+            print("Sharpe: {:.2f}".format(sharpe))
             
             df_rewards = pd.DataFrame(self.rewards_memory)
             df_rewards.to_csv('results/account_rewards_trade_{}_{}.csv'.format(self.model_name, self.iteration))
